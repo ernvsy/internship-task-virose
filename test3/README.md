@@ -2,7 +2,6 @@
 ---
 ## Tujuan
 membuat program menggunakan ESP-now communication sehingga ESP 32 dapat menerima perintah dari serial dan dari ESP lain
-
 ---
 ## TODO 1
 ```
@@ -37,13 +36,14 @@ Jika header yang masuk sesuai maka program akan mengecek lagi apakah ada data ya
              callback(buffer, (int)data_len);
 ```
 Program membaca data sebanyak `data_len` byte lalu disimpan ke dalam buffer setelah itu, lalu program memanggil fungsi callback yang akan memanggil fungsi `process_perintah`
-
 ---
 ## TODO 3
 ```
 uint8_t kren = data[0];
 ```
 mengambil byte pertama daei data dan menyimpannya di variabel `kren`
+
+### Perintah melalui Serial
 
 ```
 if (index_mac_address_asal == -1) {
@@ -66,6 +66,8 @@ uint8_t simpen[BUFFER_SIZE];
         size_t simpen_len=0;
 ```
 untuk menyimpan data byte ke dalam array 
+
+#### HALO dari Serial
 
 ```
 if (kren==HALO){
@@ -94,5 +96,98 @@ menyalin seluruh isi teks `msg` ke dalam array `simpen` agar data yang dikirim d
 mengirim data sebanyak `simpen_len` byte dari array `simpen` ke dalam ESP dengan alamat tujuan `mac_addresses[tujuan_index]`
 
 lalu memberikan informasi ke layar serial jika pesan berhasil dikirim 
+
+#### CEK dari Serial
+```
+ else if(kren==CEK){
+     String msg= nama_tujuan+ "Aku "+ namaku + " apa kamu disana?";
+     simpen[0]= CEK;
+```
+Jika perintah yang diterima adalah `CEK` maka msg akan membuat pesan balasan dengan format `String msg= nama_tujuan+ "Aku "+ namaku + " apa kamu disana?";` lalu byte pertama yang disimpan di `simpen` adalah `CEK` 
+untuk penjelasan program selanjutnya sama persis dengan yang tertulis di `HALO`
+
+#### JAWAB dari Serial
+
+```
+ else if(kren==JAWAB){
+            Serial.println("Hmm nggaada perintah Jawab dari serial");
+        }
+        else{
+            Serial.println("Perintah anomali tidak dikenal");
+        }
+        return;
+```
+Jika kren menerima jawab maka serial akan menuliskan `Hmm nggaada perintah Jawab dari serial` dan jika kren tidak menerima salah satu dari `HALO,CEK, dan JAWAB` makan serial akan menuliskan `Perintah anomali tidak dikenal`
+
+### Perintah melalui ESP NOW
+```
+String nama_pengirim= mac_index_to_names(index_mac_address_asal);
+String namaku = mac_index_to_names(mac_index_ku);
+uint8_t simpen[BUFFER_SIZE];
+```
+`nama_pengirim` mengambil nama pengirim yang tertera sesuai index di `mac_address_asal` ini menunjukkan darimana pesan berasal 
+lalu `namaku` berisi nama ESP pengirim berdasarkan `mac_index_ku` yang sudah tertera di TODO 1
+menyimpan array dengan nama `simpen` dan dengan ukuran yang tertera di `BUFFER_SIZE`
+
+#### HALO dari ESP NOW
+```
+ if(kren==HALO){
+    String msg= "Halo Juga "+ nama_pengirim + "Aku "+ namaku;
+    simpen[0]= JAWAB;
+```
+Jika kren menerima perintah ` HALO` maka msg akan menuliskan pesan jawaban dengan format `"Halo Juga "+ nama_pengirim + "Aku "+ namaku;` dan `JAWAB` akan disimpan kedalam `simpen[0]` karena ini adalah pesan jawaban
+untuk penjelasan program selanjutnya sama persis dengan yang tertulis di `HALO dari Serial`
+```
+ Serial.printf("Balas JAWAB ke %s\n", nama_pengirim.c_str());
+```
+Jika balasan sudah berhasil terkirim maka serial akan menampilkan `"Balas JAWAB ke %s\n", nama_pengirim.c_str()`
+
+#### CEK dari ESP NOW
+
+```
+ else if (kren==CEK){
+    String msg = "Iya aku "+ nama_pengirim + "Disini -" + namaku;
+    simpen[0]=JAWAB;
+```
+Jika kren menerima perintah `CEK` maka msg akan menuliskan pesan jawaban dengan format `"Iya aku "+ nama_pengirim + "Disini -" + namaku;`dan `JAWAB` akan disimpan kedalam `simpen[0]` karena ini adalah pesan jawaban
+untuk penjelasan program selanjutnya sama persis dengan yang tertulis di `HALO dari Serial
+
+#### JAWAB dari ESP NOW
+```
+ else if(kren==JAWAB){
+    if(len>1){
+        size_t copylen= (size_t)min((int)(BUFFER_SIZE-1), len-1);
+
+```
+Jika kren menerima perintah `JAWAB` maka akan dicek apakah ada pesan selain byte pertama 
+
+Jika ada `copylen` menghitung berapa banyak byte pesan yang mau di salin ke buffer msg `len-1` karena byte pertama adalah kode perintah `BUFFER_SIZE -1`agar tidak melebihi ukuran array dan fungsi `min()` memastikan kita menyalin data sepanjang `len-1` dengan batas `BUFFER_SIZE -1`
+
+```
+ char msg[BUFFER_SIZE];
+        memcpy(msg, data +1 , copylen);
+        msg[copylen]='\0';
+        Serial.printf("Jawab dari %s: %s\n", nama_pengirim.c_str(), msg);
+
+    }else{
+        Serial.printf("Jawab tanpa pesan.\n", nama_pengirim.c_str());
+    }
+ } 
+ ```
+ membuat karakter array `char msg` untuk menyimpan pesan salinan
+
+ lalu `memcpy` menyalin isi pesan ke `msg` 
+ 
+ `msg[copylen]=\0` menambahkan karakter akhir string supaya `msg` bisa dibaca sebagai `char`
+
+lalu serial akan menampilkan hasil balasan dengan format `("Jawab dari %s: %s\n", nama_pengirim.c_str(), msg);`  
+bagian else jika `len<1` yang artinya tidak ada isi pesan maka akan menampilkan `Jawab tanpa pesan.\n", nama_pengirim.c_str()`
+
+
+
+
+
+
+
 
 
