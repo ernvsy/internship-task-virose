@@ -37,6 +37,7 @@ Jika header yang masuk sesuai maka program akan mengecek lagi apakah ada data ya
              callback(buffer, (int)data_len);
 ```
 Program membaca data sebanyak `data_len` byte lalu disimpan ke dalam buffer setelah itu, lalu program memanggil fungsi callback yang akan memanggil fungsi `process_perintah`
+
 ---
 ## TODO 3
 ```
