@@ -9,6 +9,7 @@ membuat program menggunakan ESP-now communication sehingga ESP 32 dapat menerima
 const int mac_index_ku = 5;
 ```
 mengganti index dengan mac index sesuai dengan apa yang sudah tertera di  `const char *mac_names[MAC_ADDRESS_TOTAL]`
+
 ---
 ## TODO 2
 fungsi ini membaca header dalam bentuk byte yang dikirimkan dengan format paket `0xFF 0xFF 0x00`
