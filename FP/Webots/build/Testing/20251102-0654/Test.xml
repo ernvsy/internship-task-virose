@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Win32-mingw32-make"
+	BuildStamp="20251102-0654-Experimental"
+	Name="LAPTOP-USSH2L49"
+	Generator="ctest-4.1.0"
+	CompilerName="C:/mingw64/bin/g++.exe"
+	CompilerVersion="15.2.0"
+	OSName="Windows"
+	Hostname="LAPTOP-USSH2L49"
+	OSRelease=" Personal"
+	OSVersion=" (Build 9200)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString=""
+	VendorID="Unknown Manufacturer"
+	FamilyID="0"
+	ModelID="0"
+	ModelName=""
+	ProcessorCacheSize="0"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="23402"
+	TotalPhysicalMemory="12138"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="1800"
+	>
+	<Testing>
+		<StartDateTime>Nov 02 16:15 SE Asia Standard Time</StartDateTime>
+		<StartTestTime>1762074959</StartTestTime>
+		<TestList/>
+		<EndDateTime>Nov 02 16:15 SE Asia Standard Time</EndDateTime>
+		<EndTestTime>1762074959</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

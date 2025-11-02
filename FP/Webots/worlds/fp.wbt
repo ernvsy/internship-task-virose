@@ -1,0 +1,69 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "../protos/ROBOT-FP.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.16910319048716066 0.0745867477437571 0.9827720631092808 2.3235575137968185
+  position 1.2592352657792916 -1.1980029986799015 0.7938414794104838
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+ROBOT-FP {
+  hidden position_0_0 -8.087343136302051e-12
+  hidden position_0_1 -0.02000126498766484
+  hidden position_0_2 -0.009999975283990936
+  hidden position_0_3 0.04277166951439715
+  hidden position_0_4 -0.7918384871779255
+  hidden position_10_0 0.1899999441647209
+  hidden rotation_11 1 0 0 0.5954000558352788
+  hidden rotation_15 0.5696582229267254 0.5811581149163063 0.5811581149041032 2.1060007351576955
+  hidden position_15_0 -0.010001234918641124
+  hidden rotation_16 0 0 1 0.010001234918651153
+  hidden position_16_0 1.149998941511751
+  hidden rotation_17 -1 0 0 1.149998941511751
+  hidden position_17_0 -2.2500018805110584
+  hidden rotation_18 1 0 0 2.2500018805110584
+  hidden position_18_0 -1.2299989888550227
+  hidden rotation_19 -1 0 0 1.229998988855023
+  hidden position_19_0 -0.019998757324393403
+  hidden rotation_20 0 0 -0.9999999999999999 0.019998757324388845
+  hidden rotation_21 0.5734772916605189 0.5792770476852388 0.579277047685121 2.100199985682584
+  hidden position_21_0 0.020001229941494888
+  hidden rotation_22 0 0 -1 0.02000122994148627
+  hidden position_22_0 -1.149999988158674
+  hidden rotation_23 -0.9999999999999999 0 0 1.1499999881586742
+  hidden position_23_0 2.250001163752394
+  hidden rotation_24 1 0 0 2.250001163752394
+  hidden position_24_0 1.2200009757784835
+  hidden rotation_25 -1 0 0 1.2200009757784835
+  hidden position_25_0 0.049998792800930406
+  hidden rotation_26 0 0 0.9999999999999999 0.049998792800926964
+  hidden rotation_27 0.5853998820211165 0.58541175826174 0.5608921923316111 2.119309438627041
+  hidden position_27_0 0.3600000762856261
+  hidden rotation_28 0 0 1 0.4253999237143727
+  hidden position_28_0 -0.5199999533384845
+  hidden rotation_29 -1 0 0 2.0907999533384847
+  hidden rotation_30 0.6790942041573301 0.6790927736178607 0.27868273484362704 2.597908854801955
+  hidden position_30_0 -0.330000087255887
+  hidden rotation_31 0 0 -1 0.45539991274411207
+  hidden position_31_0 0.5099999615202979
+  hidden rotation_32 -1 0 0 2.080799961520298
+  translation 0.029866447917365462 0.001486590951827375 0.23392821585185536
+  rotation -0.05021863962574297 0.9987319392525797 -0.0035498944943533005 0.12526843030606236
+  name "DAR"
+  controller "controller-fp"
+  controllerArgs [
+    "as"
+  ]
+  plasticColor 0.654902 0.654902 0.654902
+}

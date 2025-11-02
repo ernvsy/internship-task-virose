@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/Erin/Desktop/TASK-FINAL/Webots/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/controller-fp.dir/includes_CXX.rsp -g -o CMakeFiles\\controller-fp.dir\\controller-fp.cpp.obj -c C:\\Users\\Erin\\Desktop\\TASK-FINAL\\Webots\\controllers\\controller-fp\\controller-fp.cpp",
+  "file": "C:/Users/Erin/Desktop/TASK-FINAL/Webots/controllers/controller-fp/controller-fp.cpp",
+  "output": "CMakeFiles/controller-fp.dir/controller-fp.cpp.obj"
+}
+]
